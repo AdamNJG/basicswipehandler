@@ -1,0 +1,24 @@
+{
+  "name": "js-swipe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamNJG/js-swipe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdamNJG/js-swipe/issues"
+  },
+  "homepage": "https://github.com/AdamNJG/js-swipe#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
