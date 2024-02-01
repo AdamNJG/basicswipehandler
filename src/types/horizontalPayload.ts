@@ -1,0 +1,1 @@
+export type HorizontalPayload = { x: number, startX: number, distance: number };
