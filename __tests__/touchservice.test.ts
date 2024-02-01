@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import TouchHandler from '../src/touchservice';
+import TouchHandler from '../src/touchService';
 import { mockTouchEvent, createTouch, multipleEvents } from './helpers/touchServiceTestHelper';
 
 /**
