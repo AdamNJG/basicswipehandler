@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "module": "ES2022",
+        "target": "ES2022",
+        "declaration": true,
+        "types": ["vitest/globals"]
+    },
+    "include": [
+        "src/touchService.ts",
+        "index.ts"   
+    ]
+}

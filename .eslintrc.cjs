@@ -1,37 +1,23 @@
+/* eslint-env node*/
 module.exports = {
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@stylistic/ts'],
   root: true,
-  extends: ['eslint:recommended'],
   rules: {
-    semi: ['warn', 'always'],
-    'max-len': [
-      'warn', 
-      {
-        code: 160
-      }
-    ],
+    semi: ['error', 'always'],
+    '@stylistic/ts/quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
+    'indent' : ['error', 2],
+    'comma-dangle': ['error', 'never'],
+    'no-multiple-empty-lines': ['error', { 'max': 1 }],
     'function-paren-newline': ['error', 'never'],
     allowAllPropertiesOnSameLine: 0,
-    quotes: ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
-    'comma-dangle': ['error', 'never'],
     'space-before-function-paren': ['error', 'always'],
     'object-curly-spacing': ['error', 'always'],
-    'indent': ['error', 2],
-    'no-multiple-empty-lines': ['error', { 'max': 1 }]
+    'keyword-spacing': 'error',
+    'space-before-blocks': 'error',
+    '@typescript-eslint/no-explicit-any': 0
   },
-  overrides: [{
-    'files': ['*.vue'],
-    'rules' : {
-      'indent': 'off',
-      'vue/script-indent': ['error', 2, { 'baseIndent': 1 }]
-    }
-  }],
-  parserOptions: {
-    ecmaVersion: 13,
-    sourceType: 'module'
-  },
-  ignorePatterns: ['node_modules', 'build', 'dist', 'public', 'icons', 'vitest.config.js'],
-  env: {
-    node: true
-  }
+  ignorePatterns: ['**/*.d.ts', '**/*.js']
 };
   

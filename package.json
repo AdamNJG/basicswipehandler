@@ -1,11 +1,17 @@
 {
-  "name": "js-swipe",
+  "name": "basicswipehandler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest"
+    "clean:win": "del *.d.ts && del *.js && del .\\src\\*.js && del .\\src\\*.d.ts",
+    "clean": "rm -f *.d.ts && rm -f *.js && rm -f ./src/*.js && rm -f ./src/*.d.ts",
+    "build:win": "npm run clean:win && tsc",
+    "build": "npm run clean && tsc",
+    "test": "vitest",
+    "test:cov": "vitest run --coverage",
+    "lint": "eslint . --ext .ts --fix"
   },
   "repository": {
     "type": "git",
@@ -19,6 +25,15 @@
   },
   "homepage": "https://github.com/AdamNJG/js-swipe#readme",
   "devDependencies": {
-    "jest": "^29.5.0"
+    "@stylistic/eslint-plugin-ts": "^1.5.4",
+    "@types/node": "^20.11.10",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vitest/coverage-v8": "^1.2.2",
+    "eslint": "^8.56.0",
+    "jsdom": "^24.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
   }
 }
