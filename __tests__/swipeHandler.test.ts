@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
-import TouchHandler from '../src/touchService';
-import { mockTouchEvent, createTouch, multipleEvents } from './helpers/touchServiceTestHelper';
+import TouchHandler from '../src/swipeHandler';
+import { mockTouchEvent, createTouch, multipleEvents } from './helpers/swipeHandlerTestHelper';
 
 /**
  *  @vitest-environment jsdom

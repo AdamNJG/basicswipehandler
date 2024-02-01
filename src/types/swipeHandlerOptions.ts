@@ -1,7 +1,7 @@
 import { VerticalPayload } from './verticalPayload';
 import { HorizontalPayload } from './horizontalPayload';
 
-export type TouchHandlerOptions = {
+export type SwipeHandlerOptions = {
   swipeRight?: () => void;
   swipeLeft?: () => void;
   swipeUp?: () => void;

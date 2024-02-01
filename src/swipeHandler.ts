@@ -1,9 +1,9 @@
 import { HorizontalPayload } from './types/horizontalPayload';
 import { VerticalPayload } from './types/verticalPayload';
 import { DistancePayload } from './types/distancePayload';
-import { TouchHandlerOptions } from './types/touchHandlerOptions';
+import { SwipeHandlerOptions } from './types/swipeHandlerOptions';
 
-class TouchHandler {
+class SwipeHandler {
   private swipeStart: DistancePayload;
   private swipeRight: (() => void) | null;
   private swipeLeft: (() => void) | null;
@@ -16,7 +16,7 @@ class TouchHandler {
   private maximumMoveThreshold: number;
   private minimumMoveThreshold: number;
 
-  public constructor (options: TouchHandlerOptions) {
+  public constructor (options: SwipeHandlerOptions) {
     this.swipeStart = { x: -1, y: -1 };
     this.swipeRight = options.swipeRight;
     this.swipeLeft = options.swipeLeft;
@@ -30,16 +30,16 @@ class TouchHandler {
     this.minimumMoveThreshold = options.minimumMoveThreshold ?? 0;
   }
 
-  public startSwipe (touchEvent: TouchEvent): void {
-    if (!this.checkChangedTouches(touchEvent)) {
+  public startSwipe <T extends Event> (touchEvent: T): void {
+    if (!this.isTouchEvent(touchEvent) || !this.checkChangedTouches(touchEvent)) {
       return;
     }
     
     this.swipeStart = { x: touchEvent.changedTouches[0].clientX, y: touchEvent.changedTouches[0].clientY };
   }
 
-  public endSwipe (touchEvent: TouchEvent): void {
-    if (!this.checkChangedTouches(touchEvent) || this.swipeStartEmpty()) return;
+  public endSwipe <T extends Event> (touchEvent: T): void {
+    if (!this.isTouchEvent(touchEvent) || !this.checkChangedTouches(touchEvent) || this.swipeStartEmpty()) return;
 
     const distance = this.getDistance(touchEvent);
     if (this.isXDistanceGreater(distance) && this.checkSwipeDistance(distance.x)) {
@@ -53,8 +53,8 @@ class TouchHandler {
     if (this.moveFinished) this.moveFinished();
   }
 
-  public touchMove (touchEvent: TouchEvent): void {
-    if (!this.checkChangedTouches(touchEvent)) return;
+  public touchMove <T extends Event> (touchEvent: T): void {
+    if (!this.isTouchEvent(touchEvent) || !this.checkChangedTouches(touchEvent)) return;
 
     const distance = this.getDistance(touchEvent);
 
@@ -80,7 +80,11 @@ class TouchHandler {
   }
 
   private checkChangedTouches (touchEvent: TouchEvent): boolean {
-    return touchEvent.changedTouches.length === 1 ? true : false;
+    return touchEvent.changedTouches.length > 0;
+  }
+
+  private isTouchEvent (event: Event): event is TouchEvent {
+    return 'changedTouches' in event;
   }
 
   private getClientXFromEvent (touchEvent: TouchEvent): number {
@@ -100,4 +104,4 @@ class TouchHandler {
   }
 }
 
-export default TouchHandler;
+export default SwipeHandler;

@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-      "module": "CommonJS",
-      "target": "es2022",
-      "declaration": true
-  },
+    "module": "commonjs",
+    "target": "es2015",
+    "declaration": true
+},
     "include": [
-        "src/touchService.ts",
+        "src/swipeHandler.ts",
         "index.ts"   
     ]
 }

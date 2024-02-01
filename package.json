@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
+  "files": [
+    "*.js",
+    "*.d.ts",
+    "src/*.js",
+    "src/*.d.ts",
+    "src/types/*.js",
+    "src/types/*.d.ts"
+  ],
   "scripts": {
-    "clean:win": "del *.d.ts && del *.js && del .\\src\\*.js && del .\\src\\*.d.ts",
+    "clean:win": "del *.d.ts && del *.js && del .\\src\\*.js && del .\\src\\*.d.ts && del .\\src\\types\\*.js && del .\\src\\types\\*.d.ts",
     "clean": "rm -f *.d.ts && rm -f *.js && rm -f ./src/**/*.js && rm -f ./src/**/*.d.ts",
     "build:win": "npm run clean:win && tsc",
     "build": "npm run clean && tsc",
@@ -17,13 +24,12 @@
     "type": "git",
     "url": "git+https://github.com/AdamNJG/js-swipe.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Adam Goldsmith <anjg.software@gmail.com>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AdamNJG/js-swipe/issues"
+    "url": "https://github.com/AdamNJG/basicswipehandler/issues"
   },
-  "homepage": "https://github.com/AdamNJG/js-swipe#readme",
+  "homepage": "https://github.com/AdamNJG/basicswipehandler#readme",
   "devDependencies": {
     "@stylistic/eslint-plugin-ts": "^1.5.4",
     "@types/node": "^20.11.10",
